@@ -1,10 +1,14 @@
 # Optionally, you can increase the reboot_timeout to survive long updates during reboot
-- name: Ensure we wait long enough for the updates to be applied during reboot
-  ansible.windows.win_updates:
-    reboot: yes
-    reboot_timeout: 3600
+---
+- hosts: dev
+  become: true
+  tasks:
+    - name: Ensure we wait long enough for the updates to be applied during reboot
+      ansible.windows.win_updates:
+        reboot: yes
+        reboot_timeout: 3600
 
-# Search and download Windows updates
-- name: Search and download Windows updates without installing them
-  ansible.windows.win_updates:
-    state: downloaded
+    # Search and download Windows updates
+    - name: Search and download Windows updates without installing them
+      ansible.windows.win_updates:
+        state: downloaded
