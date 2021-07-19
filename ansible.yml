@@ -3,4 +3,4 @@
   hosts: dev
   tasks: 
   - name: "updating windows"
-    shell: "cd /var/lib/jenkins wuauclt.exe /updatenow"
+    shell: "wuauclt /detectnow wuauclt.exe /updatenow"
