@@ -1,6 +1,14 @@
 --- 
-- hosts: 3.98.55.134 
-  become: True
-  tasks:
-- name: "updating windows"
-  shell: "cd /var/lib/jenkins wuauclt.exe /updatenow"
+- 
+  become: true
+  hosts: dev
+  tasks: 
+    - 
+      ansible.windows.win_updates: ~
+      name: "Ensure we wait long enough for the update to be applied during reboot"
+      reboot: true
+      reboot_timeeout: 3600
+    - 
+      ansible.windows.win_updates: 
+        state: download
+      name: "search and download windows updates without installing them"
