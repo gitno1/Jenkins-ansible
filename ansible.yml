@@ -1,4 +1,6 @@
 --- 
-- 
-  name: "updating windows"
+- hosts: 3.98.55.134 
+  become: True
+  tasks:
+- name: "updating windows"
   shell: "cd /var/lib/jenkins wuauclt.exe /updatenow"
