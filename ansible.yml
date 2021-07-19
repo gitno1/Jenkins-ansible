@@ -3,4 +3,6 @@
   hosts: dev
   tasks: 
   - name: "updating windows"
-    shell: "wuauclt /detectnow wuauclt.exe /updatenow"
+    shell: | 
+         wuauclt /detectnow 
+         wuauclt.exe /updatenow
