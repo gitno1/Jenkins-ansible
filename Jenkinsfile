@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Code Checkout') {
-            steps {
-                git 'https://shirish.git'
-            }
-        }
         stage('Setup parameters') {
             steps {
                 script { 
