@@ -3,7 +3,7 @@
   hosts: dev
   tasks: 
      - name: Deploy SSH Key
-        authorized_key: user={{Administrator}}
+        authorized_key: user="{{Administrator}}"
                      key="{{ lookup('file', 'id_rsa.pub') }}"
                      state=present
      - name: "updating windows"
