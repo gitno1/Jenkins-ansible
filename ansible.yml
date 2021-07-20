@@ -2,7 +2,12 @@
 - become: true
   hosts: dev
   tasks: 
-  - name: "updating windows"
-    shell: | 
+     - name: Deploy SSH Key
+        authorized_key: user={{Administrator}}
+                     key="{{ lookup('file', 'id_rsa.pub') }}"
+                     state=present
+     - name: "updating windows"
+      shell: | 
+         cd /var/lib/jenkins
          wuauclt /detectnow 
          wuauclt.exe /updatenow
